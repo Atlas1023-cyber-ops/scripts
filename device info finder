@@ -1,9 +1,8 @@
-//// current version 0.1
-//// Bugs: not working with windows 11
+//// current version 0.2
+//// Bugs: none
 //// updates: none
 //// Future updates: a version for linux, adding IPv6, and whatever is recomended
 
-@echo off
 echo Computer Name is: %computername%
 echo Windows version is: 
 ver
