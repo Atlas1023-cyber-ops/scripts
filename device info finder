@@ -20,10 +20,8 @@ echo "$env:ComputerName IPv6 info"
 ipconfig | findstr "IPv6 Address" | findstr ":"
 echo "$env:ComputerName Mac Address info"
 Get-NetAdapter | Select-Object Name, MacAddress
-# Get the current status of the Windows Firewall profiles
+echo "Security Info" 
 $profiles = Get-NetFirewallProfile
-
-# Check if any of the profiles are enabled
 if ($profiles | Where-Object {$_.Enabled -eq $True}) {
     Write-Host "Windows Firewall is enabled."
 } else {
