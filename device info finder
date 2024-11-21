@@ -1,15 +1,19 @@
-//// current version 0.2
-//// Bugs: none
-//// updates: none
-//// Future updates: a version for linux, adding IPv6, and whatever is recomended
+# current version 0.3
+# Bugs: none
+# updates: none
+# Future updates: a version for linux, adding IPv6, and whatever is recomended
+# features: finding name of computer, the IPv4 addresses of the computer, the cpu model and cores, windows version, total physcal memory and the drive letters
 
-echo Computer Name is: %computername%
+echo Computer Name is: $env:ComputerName
 echo Windows version is: 
-ver
-echo CPU is: %PROCESSOR_IDENTIFIER% 
+systeminfo | findstr /B /C:"OS Name" /B /C:"OS Version"
+echo CPU is: 
+$cpuInfo = Get-WmiObject -Class Win32_Processor
+Write-Host "CPU Model: $($cpuInfo.Name)"
+Write-Host "Number of Cores: $($cpuInfo.NumberOfCores)"
 echo Total memory is:
 wmic ComputerSystem get TotalPhysicalMemory
 echo The disks that are installed and their freespace:
 wmic logicaldisk get size,freespace,caption
-echo All the %computername% IP addresses
+echo All the $env:ComputerName IP addresses
 netsh interface ip show address | findstr "IP Address"
