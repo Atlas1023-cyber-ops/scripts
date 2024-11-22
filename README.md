@@ -1,3 +1,3 @@
-This is where all scripts that are being worked on weather it be bugs or future updates will be placed 
-if a script is done with bugs and just being updated it will also be placed in done
-all comments are welcomed and ideas too
+This is a file containg all my scripts weather they are done, in testing, or undergoing bug fixes/updates.
+All of these scripts unless specifed other wise are made for windows with some posible future updates makeing them usable on linux. 
+All comments are welcome and everything on hear is open source so you may do as you wish with it my only request being any features/bugs you want/fix do leave a message for me so I can see about adding them for everyone
