@@ -1,0 +1,29 @@
+# current version 0.3
+# Bugs: none
+# updates: none
+# Future updates: a version for linux, and whatever is recomended
+# features: finding name of computer, the IPv4 addresses of the computer, the cpu model and cores, windows version, total physcal memory and the drive letters, IPv6 addresses, Mac Address info
+
+echo "Computer Name is: $env:ComputerName"
+echo "Windows version info"
+systeminfo | findstr /B /C:"OS Name" /B /C:"OS Version"
+echo "CPU info" 
+$cpuInfo = Get-WmiObject -Class Win32_Processor
+Write-Host "CPU Model: $($cpuInfo.Name)"
+Write-Host "Number of Cores: $($cpuInfo.NumberOfCores)"
+echo "Total memory info"
+wmic ComputerSystem get TotalPhysicalMemory
+wmic logicaldisk get size,freespace,caption
+echo "$env:ComputerName IPv4 info"
+netsh interface ip show address | findstr "IP Address"
+echo "$env:ComputerName IPv6 info"
+ipconfig | findstr "IPv6 Address" | findstr ":"
+echo "$env:ComputerName Mac Address info"
+Get-NetAdapter | Select-Object Name, MacAddress
+echo "Security Info" 
+$profiles = Get-NetFirewallProfile
+if ($profiles | Where-Object {$_.Enabled -eq $True}) {
+    Write-Host "Windows Firewall is enabled."
+} else {
+    Write-Host "Windows Firewall is disabled."
+}
