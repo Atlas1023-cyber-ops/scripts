@@ -1,5 +1,5 @@
-# current version 0.3
-# Bugs: none
+# current version 1.0
+# Bugs: firewall text missplaced
 # updates: none
 # Future updates: a version for linux, and whatever is recomended
 # features: finding name of computer, the IPv4 addresses of the computer, the cpu model and cores, windows version, total physcal memory and the drive letters, IPv6 addresses, Mac Address info
